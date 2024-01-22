@@ -7,6 +7,7 @@
     <RootNamespace>Nomnom.TurretKey</RootNamespace>
     <ThunderId>TurretKey</ThunderId>
     <ThunderWebsiteUrl>https://github.com/nomnomab/lc-turret-key</ThunderWebsiteUrl>
+    <AssemblyName>TurretKey</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="turret-key.csproj.user" />
