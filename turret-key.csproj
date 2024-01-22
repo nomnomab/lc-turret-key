@@ -1,0 +1,16 @@
+<Project Sdk="LethalCompany.Plugin.Sdk/1.0.0">
+  <PropertyGroup>
+    <Title>Turret Key</Title>
+    <Description>Turrets can now be disabled if you use a key on them!</Description>
+    <PluginId>nomnom.turret-key</PluginId>
+    <Version>1.0.0</Version>
+    <RootNamespace>Nomnom.TurretKey</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="turret-key.csproj.user" />
+    <Content Remove="icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
+</Project>
