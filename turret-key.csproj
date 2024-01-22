@@ -11,7 +11,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="turret-key.csproj.user" />
-    <Content Remove="icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
