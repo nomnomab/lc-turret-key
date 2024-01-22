@@ -9,3 +9,7 @@ This mod simply adds functionality to keys so you can disable a turret by clicki
 ## 1.0.0
 
 - Initial release
+
+<br/>
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B6R2Z9U)

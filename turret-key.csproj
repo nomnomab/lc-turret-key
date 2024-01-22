@@ -5,6 +5,8 @@
     <PluginId>nomnom.turret-key</PluginId>
     <Version>1.0.0</Version>
     <RootNamespace>Nomnom.TurretKey</RootNamespace>
+    <ThunderId>TurretKey</ThunderId>
+    <ThunderWebsiteUrl>https://github.com/nomnomab/lc-turret-key</ThunderWebsiteUrl>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="turret-key.csproj.user" />
