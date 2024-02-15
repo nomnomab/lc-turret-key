@@ -6,6 +6,10 @@ This mod simply adds functionality to keys so you can disable a turret by clicki
 
 ## Changelog
 
+## 1.0.1
+
+- Turrets now properly stop firing when disabled
+
 ## 1.0.0
 
 - Initial release

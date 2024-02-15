@@ -3,11 +3,17 @@
     <Title>Turret Key</Title>
     <Description>Turrets can now be disabled if you use a key on them!</Description>
     <PluginId>nomnom.turret-key</PluginId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <RootNamespace>Nomnom.TurretKey</RootNamespace>
     <ThunderId>TurretKey</ThunderId>
     <ThunderWebsiteUrl>https://github.com/nomnomab/lc-turret-key</ThunderWebsiteUrl>
     <AssemblyName>TurretKey</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="turret-key.csproj.user" />

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Nomnom.TurretKey;
 
@@ -30,10 +31,32 @@ public static class TurretPatches {
 
         var localPlayer = GameNetworkManager.Instance.localPlayerController;
         var heldItem = localPlayer.currentlyHeldObjectServer;
-        var isHoldingKey = heldItem && heldItem.TryGetComponent(out KeyItem keyItem);
+        var isHoldingKey = heldItem && heldItem.TryGetComponent(out KeyItem _);
         var isEnabled = __instance.turretActive;
 
         trigger.disabledHoverTip = isHoldingKey && isEnabled ? "Disable turret : [ LMB ]" : string.Empty;
         trigger.oneHandedItemAllowed = true;
+    }
+    
+    [HarmonyPatch(nameof(Turret.ToggleTurretEnabledLocalClient))]
+    [HarmonyPostfix]
+    private static void ToggleTurretEnabledLocalClientPostfix(Turret __instance, bool enabled) {
+        if (enabled) return;
+        
+        __instance.turretModeLastFrame = TurretMode.Detection;
+        __instance.turretMode = TurretMode.Detection;
+        __instance.rotatingClockwise = false;
+        __instance.mainAudio.clip = null;
+        __instance.farAudio.clip = null;
+        __instance.berserkAudio.Stop();
+        if (__instance.fadeBulletAudioCoroutine != null) {
+            __instance.StopCoroutine(__instance.fadeBulletAudioCoroutine);
+        }
+        __instance.fadeBulletAudioCoroutine = __instance.StartCoroutine(__instance.FadeBulletAudio());
+        __instance.bulletParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        __instance.rotationSpeed = 28f;
+        __instance.rotatingSmoothly = true;
+        __instance.turretAnimator.SetInteger("TurretMode", 0);
+        __instance.turretInterval = Random.Range(0f, 0.15f);
     }
 }
