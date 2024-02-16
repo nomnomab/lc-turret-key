@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Nomnom.TurretKey;
 
@@ -11,15 +12,26 @@ public static class KeyPatches {
         if (!__instance.IsOwner) return;
         
         var playerHeldBy = __instance.playerHeldBy;
-        var ray = new Ray(playerHeldBy.gameplayCamera.transform.position, playerHeldBy.gameplayCamera.transform.forward);
+        var transform = playerHeldBy.gameplayCamera.transform;
+        var ray = new Ray(transform.position, transform.forward);
         if (!Physics.Raycast(ray, out var hit, 3f, LayerMask.GetMask("MapHazards"))) {
             return;
         }
 
         if (!hit.transform.TryGetComponent(out Turret turret)) return;
         if (!turret.turretActive) return;
-        
+
         turret.ToggleTurretEnabled(false);
-        playerHeldBy.DespawnHeldObject();
+        
+        var chance = Random.value;
+        if (chance <= (Plugin.ChanceForKeyToBreak?.Value ?? 1)) {
+            if (__instance.itemProperties.dropSFX) {
+                var tmpAudio = SoundManager.Instance.tempAudio1;
+                tmpAudio.transform.position = turret.transform.position;
+                tmpAudio.PlayOneShot(__instance.itemProperties.dropSFX);
+            }
+            
+            playerHeldBy.DespawnHeldObject();
+        }
     }
 }
