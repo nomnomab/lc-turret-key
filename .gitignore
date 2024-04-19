@@ -4,3 +4,4 @@ thirdparty
 plugin
 *.user
 turret-key.csproj.user
+.vs
