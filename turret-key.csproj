@@ -21,4 +21,8 @@
   <ItemGroup>
     <Folder Include="images\" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="LethalCompany.GameLibs.Steam" Version="50.0.1-ngd.0" />
+    <PackageReference Remove="LethalAPI.GameLibs" />
+  </ItemGroup>
 </Project>
