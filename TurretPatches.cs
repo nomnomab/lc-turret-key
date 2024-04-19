@@ -59,4 +59,5 @@ public static class TurretPatches {
         __instance.turretAnimator.SetInteger("TurretMode", 0);
         __instance.turretInterval = Random.Range(0f, 0.15f);
     }
+    
 }

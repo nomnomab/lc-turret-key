@@ -4,7 +4,8 @@ using Random = UnityEngine.Random;
 namespace Nomnom.TurretKey;
 
 [HarmonyPatch(typeof(KeyItem))]
-public static class KeyPatches {
+public static class KeyPatches
+{
     [HarmonyPatch(nameof(KeyItem.ItemActivate))]
     [HarmonyPostfix]
     private static void ItemActivatePostfix(KeyItem __instance) {
@@ -19,19 +20,34 @@ public static class KeyPatches {
         }
 
         if (!hit.transform.TryGetComponent(out Turret turret)) return;
+
         if (!turret.turretActive) return;
 
-        turret.ToggleTurretEnabled(false);
-        
+        if (Plugin.ResetTurrentTime?.Value > 0)
+            turret.StartCoroutine(TurnOffAndOnTurret(turret, Plugin.ResetTurrentTime.Value));
+        else
+            turret.ToggleTurretEnabled(false);
+
         var chance = Random.value;
-        if (chance <= (Plugin.ChanceForKeyToBreak?.Value ?? 1)) {
-            if (__instance.itemProperties.dropSFX) {
+        if (chance <= (Plugin.ChanceForKeyToBreak?.Value ?? 1))
+        {
+            if (__instance.itemProperties.dropSFX)
+            {
                 var tmpAudio = SoundManager.Instance.tempAudio1;
                 tmpAudio.transform.position = turret.transform.position;
                 tmpAudio.PlayOneShot(__instance.itemProperties.dropSFX);
             }
-            
+
             playerHeldBy.DespawnHeldObject();
         }
+
     }
+
+    private static IEnumerator TurnOffAndOnTurret(Turret turret, float restartTime)
+    {
+        turret.ToggleTurretEnabled(false);
+        yield return new WaitForSeconds(restartTime);
+        turret.ToggleTurretEnabled(true);
+    }
+
 }
