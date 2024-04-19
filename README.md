@@ -6,6 +6,10 @@ This mod simply adds functionality to keys so you can disable a turret by clicki
 
 ## Changelog
 
+## 1.2.0
+
+- Added a config entry to re-enable the turret after an amount of time.
+
 ## 1.1.0
 
 - Added a config entry to give a chance to break the key when used on a turret.
@@ -17,6 +21,10 @@ This mod simply adds functionality to keys so you can disable a turret by clicki
 ## 1.0.0
 
 - Initial release
+
+## Acknowledgments
+
+- `bmatusiak` for the [re-activation](https://github.com/nomnomab/lc-turret-key/pull/6) config entry.
 
 <br/>
 

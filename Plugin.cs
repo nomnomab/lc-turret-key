@@ -3,8 +3,7 @@
 namespace Nomnom.TurretKey;
 
 [BepInPlugin(GeneratedPluginInfo.Identifier, GeneratedPluginInfo.Name, GeneratedPluginInfo.Version)]
-public sealed class Plugin : BaseUnityPlugin
-{
+public sealed class Plugin : BaseUnityPlugin {
     public static ConfigEntry<float>? ChanceForKeyToBreak { get; private set; }
     public static ConfigEntry<float>? ResetTurretTime { get; private set; }
 
@@ -13,7 +12,7 @@ public sealed class Plugin : BaseUnityPlugin
         Harmony.CreateAndPatchAll(typeof(TurretPatches), GeneratedPluginInfo.Identifier);
 
         CreateConfig();
-        
+
         Logger.LogInfo("Loaded TurretKey");
     }
 
@@ -28,14 +27,15 @@ public sealed class Plugin : BaseUnityPlugin
             0.8 = 80% chance to break
             """
         );
+        
         ResetTurretTime = Config.Bind(
-                    "General",
-                    "Reset Turret after * sec",
-                    0f,
-                    """
+            "General",
+            "Reset Turret after * sec",
+            0f,
+            """
             Set time to restart turret
             Vanilla reset time is 5
             """
-                );
+        );
     }
 }
