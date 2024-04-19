@@ -23,8 +23,8 @@ public static class KeyPatches
 
         if (!turret.turretActive) return;
 
-        if (Plugin.ResetTurrentTime?.Value > 0)
-            turret.StartCoroutine(TurnOffAndOnTurret(turret, Plugin.ResetTurrentTime.Value));
+        if (Plugin.ResetTurretTime?.Value > 0)
+            turret.StartCoroutine(TurnOffAndOnTurret(turret, Plugin.ResetTurretTime.Value));
         else
             turret.ToggleTurretEnabled(false);
 

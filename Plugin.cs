@@ -6,7 +6,7 @@ namespace Nomnom.TurretKey;
 public sealed class Plugin : BaseUnityPlugin
 {
     public static ConfigEntry<float>? ChanceForKeyToBreak { get; private set; }
-    public static ConfigEntry<float>? ResetTurrentTime { get; private set; }
+    public static ConfigEntry<float>? ResetTurretTime { get; private set; }
 
     private void Awake() {
         Harmony.CreateAndPatchAll(typeof(KeyPatches), GeneratedPluginInfo.Identifier);
@@ -28,12 +28,12 @@ public sealed class Plugin : BaseUnityPlugin
             0.8 = 80% chance to break
             """
         );
-        ResetTurrentTime = Config.Bind(
+        ResetTurretTime = Config.Bind(
                     "General",
-                    "Reset Turrent after * sec",
+                    "Reset Turret after * sec",
                     0f,
                     """
-            Set time to restart turrent
+            Set time to restart turret
             Vanilla reset time is 5
             """
                 );
