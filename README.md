@@ -6,6 +6,10 @@ This mod simply adds functionality to keys so you can disable a turret by clicki
 
 ## Changelog
 
+## 1.2.1
+
+- Fixed `dotnet publish` emitting unwanted dlls into package
+
 ## 1.2.0
 
 - Added a config entry to re-enable the turret after an amount of time.

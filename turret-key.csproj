@@ -3,7 +3,7 @@
     <Title>Turret Key</Title>
     <Description>Turrets can now be disabled if you use a key on them!</Description>
     <PluginId>nomnom.turret-key</PluginId>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <RootNamespace>Nomnom.TurretKey</RootNamespace>
     <ThunderId>TurretKey</ThunderId>
     <ThunderWebsiteUrl>https://github.com/nomnomab/lc-turret-key</ThunderWebsiteUrl>
